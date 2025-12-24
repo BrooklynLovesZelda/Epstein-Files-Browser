@@ -20,8 +20,8 @@
 body {
   margin: 0;
   font-family: "Manrope", system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at 20% 20%, rgba(79, 139, 110, 0.09), transparent 35%),
-    radial-gradient(circle at 80% 0%, rgba(197, 164, 109, 0.12), transparent 32%),
+  background: radial-gradient(circle at 20% 20%, rgba(79, 139, 110, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(79, 139, 110, 0.06), transparent 32%),
     var(--paper);
   color: var(--ink);
   min-height: 100vh;
@@ -40,9 +40,9 @@ p {
 }
 
 .page {
-  width: min(1400px, 96vw);
+  width: min(1440px, 98vw);
   margin: 0 auto;
-  padding: 32px 24px 72px;
+  padding: 32px 28px 72px;
 }
 
 .topbar {
@@ -53,28 +53,18 @@ p {
   position: sticky;
   top: 0;
   z-index: 20;
-  padding: 14px 0;
-  background: linear-gradient(180deg, rgba(247, 241, 232, 0.94), rgba(247, 241, 232, 0.8));
+  padding: 14px 16px;
+  background: var(--panel);
   backdrop-filter: blur(6px);
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.brand-mark {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(79, 139, 110, 0.28), rgba(197, 164, 109, 0.35));
-  color: var(--ink);
-  font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: var(--shadow);
+  gap: 8px;
 }
 
 .eyebrow {
@@ -116,7 +106,7 @@ button {
   background: var(--panel);
   color: var(--ink);
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: 999px;
   font-weight: 700;
   letter-spacing: 0.2px;
   cursor: pointer;
@@ -130,7 +120,7 @@ button:hover {
 }
 
 .primary {
-  background: linear-gradient(135deg, #4f8b6e, #3c7259);
+  background: linear-gradient(135deg, #4f8b6e, #4f8b6e);
   color: #fff;
   border: none;
 }
@@ -164,7 +154,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
   border: 1px solid var(--stroke);
@@ -194,7 +184,7 @@ button:hover {
 .hero-card {
   padding: 20px;
   border-radius: 18px;
-  background: linear-gradient(160deg, rgba(79, 139, 110, 0.12), rgba(255, 255, 255, 0.95));
+  background: linear-gradient(160deg, rgba(79, 139, 110, 0.14), rgba(255, 255, 255, 0.95));
   border: 1px solid var(--stroke);
   box-shadow: var(--shadow);
 }
@@ -306,7 +296,7 @@ button:hover {
   border: 1px solid var(--stroke);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.9);
-  max-height: 520px;
+  max-height: 70vh;
   overflow: auto;
 }
 
@@ -481,7 +471,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: linear-gradient(135deg, rgba(197, 164, 109, 0.18), rgba(255, 255, 255, 0.96));
+  background: var(--panel);
   border: 1px solid var(--stroke);
   box-shadow: var(--shadow);
 }

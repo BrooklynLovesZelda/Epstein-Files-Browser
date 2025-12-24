@@ -10,13 +10,11 @@
   <div class="page">
     <header class="topbar" id="top">
       <div class="brand">
-        <div class="brand-mark">EP</div>
         <div>
           <h1>Epstein Files</h1>
         </div>
       </div>
       <nav class="links">
-        <a href="#hero">Overview</a>
         <a href="#explorer">Files</a>
         <a href="#download">Download</a>
         <a href="#license">License</a>
@@ -28,35 +26,6 @@
     </header>
 
     <main>
-      <section class="hero" id="hero">
-        <div>
-          <h2>Modern workspace for PDFs, videos, and structured data.</h2>
-          <p class="lede">
-            A calm, paper-toned surface for reviewing documents, watching media, and pulling entire datasets in one click.
-          </p>
-          <div class="chips">
-            <span class="chip">PDF dossiers</span>
-            <span class="chip">Video testimony</span>
-            <span class="chip">CSV / XLSX data</span>
-            <span class="chip">Bulk export</span>
-          </div>
-          <div class="cta-row">
-            <a class="primary button-link" href="#download">Download archive</a>
-            <a class="ghost button-link" href="#explorer">View files</a>
-          </div>
-        </div>
-        <div class="hero-card">
-          <h3 id="datasetTitle">Complete Archive</h3>
-          <p class="meta" id="datasetSize">~12.4 GB, compressed</p>
-          <p class="meta subtle">Includes PDFs, source videos, OCR text, and derived datasets.</p>
-          <button class="primary full" id="ctaDownload">Download archive</button>
-          <div class="progress-shell" aria-live="polite">
-            <div class="progress" id="downloadProgress"></div>
-          </div>
-          <p class="note">Download points to <code>assets/DataSets.7z</code> (full archive).</p>
-        </div>
-      </section>
-
       <section class="explorer" id="explorer">
         <div class="pane content-pane">
           <header class="pane-header between">
@@ -108,10 +77,12 @@
 
       <section class="cta" id="download">
         <div>
-          <h3>Pull the entire archive in one go.</h3>
-          <p class="lede">Batch download keeps structure intact and pairs media with their source notes.</p>
+          <h3 id="datasetTitle">Full Asset Drop</h3>
+          <p class="meta" id="datasetSize">13.7 GB</p>
+          <p class="meta subtle">Includes PDFs, source videos, OCR text, and derived datasets.</p>
+          <p class="note">Download points to <code>assets/DataSets.7z</code> (full archive).</p>
         </div>
-        <button class="primary" id="ctaFooter">Download full dataset</button>
+        <button class="primary" id="ctaDownload">Download archive</button>
       </section>
     </main>
 
