@@ -21,13 +21,10 @@ const refs = {
   paneTitle: document.getElementById("paneTitle"),
   viewer: document.getElementById("viewer"),
   showAllToggle: document.getElementById("showAllToggle"),
-  typeFilter: document.getElementById("typeFilter"),
-  sortSelect: document.getElementById("sortSelect"),
   datasetTitle: document.getElementById("datasetTitle"),
   datasetSize: document.getElementById("datasetSize"),
   downloadButtons: [document.getElementById("downloadAll"), document.getElementById("ctaDownload"), document.getElementById("ctaFooter")],
-  progress: document.getElementById("downloadProgress"),
-  toast: document.getElementById("toast")
+  progress: document.getElementById("downloadProgress")
 };
 
 refs.datasetTitle.textContent = datasetPackage.title;
@@ -39,9 +36,7 @@ const state = {
   filtered: [],
   selected: null,
   showAll: false,
-  limited: true,
-  type: "all",
-  sort: "name"
+  limited: true
 };
 
 const normalizePath = (p) => p.replace(/\\\\/g, "/").replace(/\\/g, "/");
@@ -64,29 +59,6 @@ const detectType = (path) => {
   return "file";
 };
 
-const typeLabel = (type) => {
-  const labels = {
-    pdf: "PDF",
-    video: "Video",
-    audio: "Audio",
-    table: "CSV/TSV",
-    text: "Text",
-    data: "Data",
-    spreadsheet: "Spreadsheet",
-    file: "Other"
-  };
-  return labels[type] || "File";
-};
-
-const showToast = (message) => {
-  if (!refs.toast) return;
-  refs.toast.textContent = message;
-  refs.toast.className = "toast show";
-  setTimeout(() => {
-    refs.toast.className = "toast";
-  }, 2400);
-};
-
 const simulateDownload = () => {
   let progress = 0;
   refs.progress.style.width = "0%";
@@ -97,9 +69,8 @@ const simulateDownload = () => {
       clearInterval(timer);
       if (datasetPackage.url && datasetPackage.url !== "#") {
         window.open(datasetPackage.url, "_blank");
-        showToast("Archive download started.");
       } else {
-        showToast("Set datasetPackage.url to enable downloads.");
+        alert("Set datasetPackage.url to enable downloads.");
       }
     }
     refs.progress.style.width = `${progress}%`;
@@ -162,7 +133,6 @@ const renderList = () => {
       <div><strong>${file.name}</strong></div>
       <div class="meta">${file.path}</div>
       <div class="meta">${file.sizeLabel}</div>
-      <div><span class="badge">${typeLabel(file.type)}</span></div>
     `;
     row.onclick = () => {
       state.selected = file;
@@ -176,31 +146,20 @@ const renderList = () => {
 
 const applyFilter = () => {
   const query = refs.fileSearch.value.toLowerCase().trim();
-  state.filteredAll = state.mapped
-    .filter((file) => file.name.toLowerCase().includes(query) || file.path.toLowerCase().includes(query))
-    .filter((file) => (state.type === "all" ? true : file.type === state.type));
-  state.filteredAll = sortFiles(state.filteredAll, state.sort);
+  state.filteredAll = state.mapped.filter((file) => file.name.toLowerCase().includes(query) || file.path.toLowerCase().includes(query));
   const limit = Math.min(CHUNK_SIZE, state.filteredAll.length);
   state.filtered = state.filteredAll.slice(0, limit);
   state.limited = state.filteredAll.length > limit;
   renderList();
 };
 
-const sortFiles = (list, sortKey) => {
-  const arr = [...list];
-  if (sortKey === "size") return arr.sort((a, b) => b.size - a.size);
-  if (sortKey === "type") return arr.sort((a, b) => a.type.localeCompare(b.type) || a.name.localeCompare(b.name));
-  return arr.sort((a, b) => a.name.localeCompare(b.name));
-};
-
 const renderViewerHeader = (file) => {
   const header = document.createElement("div");
-  header.className = "viewer-header";
   header.innerHTML = `
-    <div class="badge">${typeLabel(file.type)}</div>
+    <p class="eyebrow">${file.type}</p>
     <h4>${file.name}</h4>
-    <p class="meta">${file.path} | ${file.sizeLabel}</p>
-    <div class="viewer-actions">
+    <p class="meta">${file.path} • ${file.sizeLabel}</p>
+    <div class="view-toggles">
       <button class="ghost" id="openFile">Open in new tab</button>
       <button class="primary" id="downloadFile">Download</button>
     </div>
@@ -301,21 +260,9 @@ const renderTablePreview = (csvText, delimiter, full) => {
 };
 
 refs.fileSearch.addEventListener("input", applyFilter);
-refs.typeFilter.addEventListener("change", (e) => {
-  state.type = e.target.value;
-  applyFilter();
-});
-refs.sortSelect.addEventListener("change", (e) => {
-  state.sort = e.target.value;
-  applyFilter();
-});
 refs.refresh.addEventListener("click", () => {
   refs.fileSearch.value = "";
-  refs.typeFilter.value = "all";
-  refs.sortSelect.value = "name";
   state.showAll = false;
-  state.type = "all";
-  state.sort = "name";
   refs.showAllToggle.checked = false;
   state.selected = null;
   refs.viewer.innerHTML = `<p class="meta">Choose a file to preview.</p>`;

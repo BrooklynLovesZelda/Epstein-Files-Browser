@@ -13,15 +13,6 @@ A lightweight static front-end to browse, preview, and download the Epstein File
 2. Open `index.html` in your browser. No build step is required; all assets are local.
 3. Ensure `assets-manifest.js` and the `assets/` directory remain in place for file listing and downloads to work.
 
-## Regenerating the asset manifest
-Use the provided helper to rebuild `assets-manifest.json` and `assets-manifest.js` after adding or removing files:
-
-```bash
-python generate_manifest.py --root assets --json assets-manifest.json --js assets-manifest.js
-```
-
-You can point `--root` to any folder of files you want to expose. The script writes relative paths (prefixing them with the root folder name) and sizes in bytes.
-
 ## Customization
 - Update the GitHub link in the footer (`index.html`) to point to your repository.
 - Adjust copy, branding, or layout in `index.html` and `styles.css` as needed.

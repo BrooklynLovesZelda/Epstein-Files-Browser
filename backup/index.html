@@ -8,19 +8,13 @@
 </head>
 <body>
   <div class="page">
-    <header class="topbar" id="top">
+    <header class="topbar">
       <div class="brand">
         <div class="brand-mark">EP</div>
         <div>
           <h1>Epstein Files</h1>
         </div>
       </div>
-      <nav class="links">
-        <a href="#hero">Overview</a>
-        <a href="#explorer">Files</a>
-        <a href="#download">Download</a>
-        <a href="#license">License</a>
-      </nav>
       <nav class="actions">
         <button class="ghost" id="refreshButton">Refresh</button>
         <button class="primary" id="downloadAll">Download full dataset</button>
@@ -28,7 +22,7 @@
     </header>
 
     <main>
-      <section class="hero" id="hero">
+      <section class="hero">
         <div>
           <h2>Modern workspace for PDFs, videos, and structured data.</h2>
           <p class="lede">
@@ -39,10 +33,6 @@
             <span class="chip">Video testimony</span>
             <span class="chip">CSV / XLSX data</span>
             <span class="chip">Bulk export</span>
-          </div>
-          <div class="cta-row">
-            <a class="primary button-link" href="#download">Download archive</a>
-            <a class="ghost button-link" href="#explorer">View files</a>
           </div>
         </div>
         <div class="hero-card">
@@ -57,28 +47,13 @@
         </div>
       </section>
 
-      <section class="explorer" id="explorer">
+      <section class="explorer">
         <div class="pane content-pane">
           <header class="pane-header between">
             <div>
               <h3 id="paneTitle">Select a file to preview</h3>
             </div>
             <div class="view-toggles">
-              <select id="typeFilter" aria-label="Filter by type">
-                <option value="all">All types</option>
-                <option value="pdf">PDF</option>
-                <option value="video">Video</option>
-                <option value="audio">Audio</option>
-                <option value="table">CSV/TSV</option>
-                <option value="text">Text/Data</option>
-                <option value="spreadsheet">Spreadsheet</option>
-                <option value="file">Other</option>
-              </select>
-              <select id="sortSelect" aria-label="Sort files">
-                <option value="name">Sort: Name</option>
-                <option value="size">Sort: Size</option>
-                <option value="type">Sort: Type</option>
-              </select>
               <input type="search" id="fileSearch" placeholder="Search files..." aria-label="Search files" />
               <button class="ghost" id="refreshButton">Reset</button>
             </div>
@@ -106,7 +81,7 @@
         </div>
       </section>
 
-      <section class="cta" id="download">
+      <section class="cta">
         <div>
           <h3>Pull the entire archive in one go.</h3>
           <p class="lede">Batch download keeps structure intact and pairs media with their source notes.</p>
@@ -115,11 +90,9 @@
       </section>
     </main>
 
-    <footer class="footer" id="license">
+    <footer class="footer">
       Brooklyn Halmstad — <a class="footer-link" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">This website is public domain</a> — <a class="footer-link" href="#" target="_blank" rel="noreferrer">GitHub repository</a>
     </footer>
-
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </div>
 
   <script src="assets-manifest.js"></script>
